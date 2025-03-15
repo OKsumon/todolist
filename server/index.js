@@ -7,15 +7,16 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 dotenv.config();
 
 // ✅ Enable CORS before defining routes
+// ✅ Enable CORS for frontend requests
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow frontend requests
-    credentials: true, // Allow cookies & authentication headers
+    origin: ["http://localhost:5173", "https://your-frontend.vercel.app"],
+    credentials: true,
   })
 );
 
